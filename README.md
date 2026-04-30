@@ -10,7 +10,7 @@ Bennett Toolbox 是一个基于 Electron、React、Vite 和 TypeScript 的桌面
 
 - JSON 格式化：格式化、校验和查看 JSON 内容。
 - 变量命名：把中文或自然语言描述转换为常见变量命名风格。
-- 图片转换：支持 PNG、JPG、WebP、GIF、SVG、ICO，以及 macOS 下的 HEIC/HEIF。
+- 图片转换：支持 PNG、JPG、WebP、GIF、SVG、ICO，以及 HEIC/HEIF。
 - 文件搜索：在本地目录中搜索文件。
 - 文档转 MD：通过随包的 MarkItDown 转换器把常见文档转为 Markdown。
 - 截图悬浮：截取屏幕区域并以悬浮窗口展示。
@@ -87,6 +87,23 @@ CSC_IDENTITY_AUTO_DISCOVERY=false npm run build
 
 构建产物会输出到 `release/` 目录。该目录不会提交到 Git。
 
+## 下载最新安装包
+
+每次推送到 `master` 分支后，GitHub Actions 会自动构建 macOS 和 Windows
+安装包，并更新 `latest` GitHub Release。
+
+你可以在以下地址下载最新安装包：
+
+```text
+https://github.com/bennett-lee/bennett-toolbox/releases/latest
+```
+
+<!-- prettier-ignore -->
+> [!IMPORTANT]
+> 安装包文件超过 GitHub 普通仓库文件的 100 MB 限制，因此不会直接提交到
+> Git。它们会作为 GitHub Release 资产发布，用户仍然可以从 GitHub 页面直接
+> 下载。
+
 ## 测试
 
 运行单元测试：
@@ -109,9 +126,9 @@ npm exec vite -- build
 
 ## 平台说明
 
-HEIC/HEIF 图片转换当前使用 macOS 自带的 `sips` 命令，因此只在 macOS
-桌面应用中可用。Windows 版本可以正常使用其他图片格式转换，但 HEIC/HEIF
-转换需要后续接入 Windows 可用的转换后端。
+HEIC/HEIF 图片转换在 macOS 下优先使用系统自带的 `sips` 命令，在 Windows
+和其他平台下使用随应用安装的 `heic-convert` 转换库。该功能不要求用户额外
+安装 HEIC 扩展或命令行工具。
 
 ## Git 提交约定
 

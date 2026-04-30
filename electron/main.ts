@@ -2,6 +2,7 @@ import { app, BrowserWindow, ipcMain, dialog, screen, desktopCapturer, systemPre
 import { spawn } from 'child_process'
 import fs from 'fs'
 import path from 'path'
+import heicConvert from 'heic-convert'
 import { MARKITDOWN_EXTENSIONS, MarkitdownCommand, formatMarkitdownError, getMarkitdownCommands } from './markitdown'
 
 // 存储悬浮窗口
@@ -129,6 +130,36 @@ const convertHeicWithSips = (
   })
 }
 
+const convertHeicWithNode = async (
+  filePath: string,
+  targetFormat: 'png' | 'jpg',
+): Promise<{ dataUrl: string; size: number }> => {
+  const inputBuffer = await fs.promises.readFile(filePath)
+  const format = targetFormat === 'jpg' ? 'JPEG' : 'PNG'
+  const outputBuffer = Buffer.from(await heicConvert({
+    buffer: inputBuffer,
+    format,
+    quality: 0.92,
+  }))
+  const mimeType = targetFormat === 'jpg' ? 'image/jpeg' : 'image/png'
+
+  return {
+    dataUrl: `data:${mimeType};base64,${outputBuffer.toString('base64')}`,
+    size: outputBuffer.length,
+  }
+}
+
+const convertHeicImage = (
+  filePath: string,
+  targetFormat: 'png' | 'jpg',
+) => {
+  if (process.platform === 'darwin') {
+    return convertHeicWithSips(filePath, targetFormat)
+  }
+
+  return convertHeicWithNode(filePath, targetFormat)
+}
+
 const convertFileToMarkdown = async (filePath: string) => {
   const commands = getMarkitdownCommands({
     appPath: app.getAppPath(),
@@ -249,7 +280,7 @@ ipcMain.handle('convert-file-to-markdown', async (_, filePath: string) => {
   return convertFileToMarkdown(filePath)
 })
 
-// IPC 处理程序：使用 macOS sips 转换 HEIC / HEIF
+// IPC 处理程序：转换 HEIC / HEIF
 ipcMain.handle('convert-heic-image', async (_, options: {
   filePath: string
   targetFormat: 'png' | 'jpg'
@@ -270,7 +301,7 @@ ipcMain.handle('convert-heic-image', async (_, options: {
   }
 
   try {
-    const result = await convertHeicWithSips(filePath, targetFormat)
+    const result = await convertHeicImage(filePath, targetFormat)
     return {
       success: true,
       ...result,
