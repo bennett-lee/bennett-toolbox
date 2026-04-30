@@ -1,0 +1,134 @@
+.json-viewer {
+    flex: 1;
+    padding: 16px;
+    font-family: var(--font-mono);
+    font-size: 13px;
+    line-height: 1.7;
+    overflow: auto;
+    background: var(--bg-primary);
+    border-radius: 0 0 var(--radius-md) var(--radius-md);
+}
+
+.json-viewer-empty {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    color: var(--text-muted);
+    background: var(--bg-primary);
+    border-radius: 0 0 var(--radius-md) var(--radius-md);
+}
+
+.empty-icon {
+    font-size: 48px;
+    opacity: 0.3;
+    font-family: var(--font-mono);
+}
+
+.empty-text {
+    font-size: 14px;
+    color: var(--text-secondary);
+}
+
+.empty-hint {
+    font-size: 12px;
+    opacity: 0.6;
+}
+
+/* JSON 节点 */
+.json-node {
+    position: relative;
+}
+
+.json-node.is-root {
+    padding-left: 0;
+}
+
+.json-line {
+    display: inline;
+    white-space: nowrap;
+}
+
+.json-line.expandable {
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    padding: 2px 4px;
+    margin: -2px -4px;
+    border-radius: 4px;
+    transition: background var(--transition-fast);
+}
+
+.json-line.expandable:hover {
+    background: rgba(100, 100, 150, 0.15);
+}
+
+.expand-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 16px;
+    height: 16px;
+    margin-right: 4px;
+    font-size: 10px;
+    color: var(--text-muted);
+    transition: transform var(--transition-fast);
+}
+
+.json-line.collapsed .expand-icon {
+    color: var(--primary-light);
+}
+
+/* 子节点缩进 */
+.json-children {
+    padding-left: 24px;
+    border-left: 1px solid rgba(100, 100, 150, 0.15);
+    margin-left: 8px;
+}
+
+/* 语法高亮 */
+.json-key {
+    color: var(--json-key);
+}
+
+.json-colon {
+    color: var(--text-muted);
+}
+
+.json-string {
+    color: var(--json-string);
+}
+
+.json-number {
+    color: var(--json-number);
+}
+
+.json-boolean {
+    color: var(--json-boolean);
+}
+
+.json-null {
+    color: var(--json-null);
+    font-style: italic;
+}
+
+.json-bracket {
+    color: var(--json-bracket);
+    font-weight: 500;
+}
+
+.json-comma {
+    color: var(--text-muted);
+}
+
+.json-preview {
+    display: inline-block;
+    padding: 0 6px;
+    margin: 0 4px;
+    font-size: 11px;
+    color: var(--text-muted);
+    background: rgba(100, 100, 150, 0.1);
+    border-radius: 4px;
+}

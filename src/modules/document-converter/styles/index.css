@@ -1,0 +1,181 @@
+/* ================================
+   文档转 Markdown 模块样式
+   ================================ */
+
+.document-converter {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    gap: 16px;
+}
+
+.document-converter-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-shrink: 0;
+}
+
+.document-converter-body {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    min-height: 0;
+    overflow: hidden;
+}
+
+.document-drop-zone {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    padding: 20px;
+    background: var(--bg-card);
+    border: 2px dashed var(--border-color);
+    border-radius: var(--radius-lg);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.document-drop-zone:hover,
+.document-drop-zone.has-file {
+    border-color: var(--primary-color);
+    background: rgba(80, 120, 255, 0.06);
+}
+
+.document-drop-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 56px;
+    height: 56px;
+    flex-shrink: 0;
+    color: var(--primary-light);
+    background: rgba(80, 120, 255, 0.12);
+    border: 1px solid rgba(80, 120, 255, 0.24);
+    border-radius: var(--radius-md);
+    font-family: var(--font-mono);
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.document-drop-copy {
+    flex: 1;
+    min-width: 0;
+}
+
+.document-drop-title {
+    overflow: hidden;
+    color: var(--text-primary);
+    font-size: 16px;
+    font-weight: 600;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.document-drop-hint {
+    margin-top: 6px;
+    color: var(--text-muted);
+    font-size: 13px;
+}
+
+.document-summary {
+    display: grid;
+    grid-template-columns: minmax(90px, 120px) minmax(110px, 140px) minmax(0, 1fr) auto;
+    gap: 10px;
+    align-items: center;
+    padding: 14px;
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+}
+
+.summary-item {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    min-width: 0;
+}
+
+.summary-label {
+    color: var(--text-muted);
+    font-size: 11px;
+}
+
+.summary-value {
+    overflow: hidden;
+    color: var(--text-primary);
+    font-family: var(--font-mono);
+    font-size: 13px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.path-item {
+    min-width: 0;
+}
+
+.markdown-output-panel {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+    overflow: hidden;
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+}
+
+.command-badge {
+    margin-left: auto;
+    overflow: hidden;
+    max-width: 320px;
+    color: var(--text-muted);
+    font-family: var(--font-mono);
+    font-size: 11px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.markdown-output {
+    flex: 1;
+    width: 100%;
+    min-height: 0;
+    padding: 16px;
+    resize: none;
+    color: var(--text-primary);
+    background: rgba(10, 10, 24, 0.45);
+    border: none;
+    outline: none;
+    font-family: var(--font-mono);
+    font-size: 13px;
+    line-height: 1.65;
+}
+
+.markdown-output::placeholder {
+    color: var(--text-muted);
+}
+
+.document-converter .error-box {
+    align-items: flex-start;
+}
+
+.document-converter .error-box pre {
+    margin: 0;
+    overflow: auto;
+    white-space: pre-wrap;
+    font-family: inherit;
+}
+
+@media (max-width: 900px) {
+    .document-drop-zone,
+    .document-summary {
+        grid-template-columns: 1fr;
+    }
+
+    .document-drop-zone {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+}

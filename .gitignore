@@ -1,0 +1,14 @@
+.DS_Store
+.windsurf/
+.env
+.env.*
+
+node_modules/
+build_tools/
+
+dist/
+dist-electron/
+release/
+
+vendor/markitdown/markitdown
+vendor/markitdown/markitdown.exe

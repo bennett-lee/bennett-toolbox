@@ -1,0 +1,173 @@
+/* ================================
+   全局样式 & CSS 变量
+   ================================ */
+
+:root {
+  /* 主色调 - 深邃科技蓝 */
+  --primary-hue: 220;
+  --primary-color: hsl(var(--primary-hue), 70%, 55%);
+  --primary-light: hsl(var(--primary-hue), 70%, 65%);
+  --primary-dark: hsl(var(--primary-hue), 70%, 40%);
+  
+  /* 背景色 - 深色主题 */
+  --bg-primary: #0f0f23;
+  --bg-secondary: #1a1a2e;
+  --bg-tertiary: #252542;
+  --bg-card: rgba(30, 30, 60, 0.6);
+  
+  /* 文字颜色 */
+  --text-primary: #e8e8f0;
+  --text-secondary: #a0a0b8;
+  --text-muted: #6c6c8a;
+  
+  /* 边框 */
+  --border-color: rgba(100, 100, 150, 0.2);
+  --border-glow: rgba(80, 120, 255, 0.3);
+  
+  /* JSON 语法高亮颜色 */
+  --json-key: #7dd3fc;
+  --json-string: #86efac;
+  --json-number: #fbbf24;
+  --json-boolean: #f472b6;
+  --json-null: #94a3b8;
+  --json-bracket: #a78bfa;
+  
+  /* 阴影 */
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 20px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 8px 40px rgba(0, 0, 0, 0.5);
+  --shadow-glow: 0 0 20px rgba(80, 120, 255, 0.2);
+  
+  /* 圆角 */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  
+  /* 过渡 */
+  --transition-fast: 0.15s ease;
+  --transition-normal: 0.25s ease;
+  --transition-slow: 0.4s ease;
+  
+  /* 字体 */
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', 'Consolas', monospace;
+}
+
+/* ================================
+   基础重置
+   ================================ */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body, #root {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
+body {
+  font-family: var(--font-sans);
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--text-primary);
+  background: var(--bg-primary);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* 滚动条样式 */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(100, 100, 150, 0.3);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(100, 100, 150, 0.5);
+}
+
+/* 文本选中 */
+::selection {
+  background: var(--primary-color);
+  color: white;
+}
+
+/* ================================
+   通用工具类
+   ================================ */
+
+.glass {
+  background: rgba(30, 30, 60, 0.5);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--border-color);
+}
+
+.glow {
+  box-shadow: var(--shadow-glow);
+}
+
+/* 按钮基础样式 */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 8px 16px;
+  font-size: 13px;
+  font-weight: 500;
+  border: none;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  outline: none;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+  color: white;
+  box-shadow: 0 2px 10px rgba(80, 120, 255, 0.3);
+}
+
+.btn-primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 15px rgba(80, 120, 255, 0.4);
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+}
+
+.btn-secondary {
+  background: var(--bg-tertiary);
+  color: var(--text-secondary);
+  border: 1px solid var(--border-color);
+}
+
+.btn-secondary:hover {
+  background: rgba(60, 60, 100, 0.5);
+  color: var(--text-primary);
+}
+
+.btn-icon {
+  padding: 8px;
+  background: transparent;
+  color: var(--text-muted);
+}
+
+.btn-icon:hover {
+  color: var(--text-primary);
+  background: rgba(100, 100, 150, 0.1);
+}

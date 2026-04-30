@@ -1,0 +1,124 @@
+/* ================================
+   JSON 格式化模块样式
+   ================================ */
+
+.json-formatter {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    gap: 16px;
+}
+
+.json-formatter-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-shrink: 0;
+}
+
+.module-title {
+    font-size: 22px;
+    font-weight: 600;
+    background: linear-gradient(135deg, var(--text-primary), var(--primary-light));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.header-actions {
+    display: flex;
+    gap: 8px;
+}
+
+.header-actions .btn:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* 主体内容区域 */
+.json-formatter-body {
+    flex: 1;
+    display: flex;
+    gap: 0;
+    min-height: 0;
+    background: var(--bg-card);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border-color);
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+}
+
+/* 面板 */
+.panel {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    overflow: hidden;
+}
+
+.panel-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 16px;
+    background: rgba(40, 40, 70, 0.5);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.panel-title {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-secondary);
+}
+
+.error-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 4px 8px;
+    font-size: 11px;
+    font-weight: 500;
+    color: #ff8080;
+    background: rgba(255, 80, 80, 0.15);
+    border-radius: 20px;
+}
+
+.success-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 4px 8px;
+    font-size: 11px;
+    font-weight: 500;
+    color: #80ff80;
+    background: rgba(80, 255, 80, 0.15);
+    border-radius: 20px;
+}
+
+.info-text {
+    font-size: 11px;
+    color: var(--text-muted);
+    margin-left: auto;
+}
+
+/* 面板分隔线 */
+.panel-divider {
+    width: 1px;
+    background: var(--border-color);
+    position: relative;
+}
+
+.panel-divider::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 6px;
+    height: 40px;
+    background: var(--bg-tertiary);
+    border-radius: 3px;
+    border: 1px solid var(--border-color);
+}
