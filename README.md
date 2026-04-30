@@ -10,24 +10,39 @@ Bennett Toolbox 是一个基于 Electron、React、Vite 和 TypeScript 的桌面
 
 ## 功能演示
 
-下面是应用主要功能的界面演示。文件搜索、文档转 Markdown 和截图悬浮需要在
-Electron 桌面应用中使用，浏览器开发模式下会显示桌面环境提示。
+下面是应用主要功能的宽屏界面演示。
 
-| JSON 格式化 | 变量命名 |
-| --- | --- |
-| ![JSON 格式化界面](docs/images/json-formatter.png) | ![变量命名界面](docs/images/translate-naming.png) |
+### JSON 格式化
 
-| 图片转换 | 视频转 GIF |
-| --- | --- |
-| ![图片转换界面](docs/images/image-converter.png) | ![视频转 GIF 界面](docs/images/video-to-gif.png) |
+![JSON 格式化界面](docs/images/json-formatter.png)
 
-| 文件搜索 | 文档转 Markdown |
-| --- | --- |
-| ![文件搜索界面](docs/images/file-search.png) | ![文档转 Markdown 界面](docs/images/document-converter.png) |
+### 变量命名
 
-| 截图悬浮 | 屏幕取色 |
-| --- | --- |
-| ![截图悬浮界面](docs/images/screenshot-float.png) | ![屏幕取色界面](docs/images/color-picker.png) |
+![变量命名界面](docs/images/translate-naming.png)
+
+### 图片转换
+
+![图片转换界面](docs/images/image-converter.png)
+
+### 视频转 GIF
+
+![视频转 GIF 界面](docs/images/video-to-gif.png)
+
+### 文件搜索
+
+![文件搜索界面](docs/images/file-search.png)
+
+### 文档转 Markdown
+
+![文档转 Markdown 界面](docs/images/document-converter.png)
+
+### 截图悬浮
+
+![截图悬浮界面](docs/images/screenshot-float.png)
+
+### 屏幕取色
+
+![屏幕取色界面](docs/images/color-picker.png)
 
 ## 功能
 
