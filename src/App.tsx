@@ -7,6 +7,7 @@ import FileSearch from './modules/file-search'
 import ScreenshotFloat from './modules/screenshot-float'
 import ColorPicker from './modules/color-picker'
 import DocumentConverter from './modules/document-converter'
+import VideoToGif from './modules/video-to-gif'
 import './styles/App.css'
 
 // 默认模块配置
@@ -14,6 +15,7 @@ const defaultModules = [
     { id: 'json-formatter', name: 'JSON 格式化', icon: '{ }' },
     { id: 'translate-naming', name: '变量命名', icon: 'Aa' },
     { id: 'image-converter', name: '图片转换', icon: '🖼️' },
+    { id: 'video-to-gif', name: '视频转 GIF', icon: 'GIF' },
     { id: 'file-search', name: '文件搜索', icon: '🔍' },
     { id: 'document-converter', name: '文档转 MD', icon: 'MD' },
     { id: 'screenshot-float', name: '截图悬浮', icon: '📌' },
@@ -68,6 +70,8 @@ function App() {
                 return <TranslateNaming />
             case 'image-converter':
                 return <ImageConverter />
+            case 'video-to-gif':
+                return <VideoToGif />
             case 'file-search':
                 return <FileSearch />
             case 'document-converter':

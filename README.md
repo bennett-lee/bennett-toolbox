@@ -8,6 +8,27 @@ Bennett Toolbox 是一个基于 Electron、React、Vite 和 TypeScript 的桌面
 它把常用的开发、文件、图片和截图工具放在一个本地应用里，适合日常快速处理
 数据、命名、格式转换和屏幕辅助任务。
 
+## 功能演示
+
+下面是应用主要功能的界面演示。文件搜索、文档转 Markdown 和截图悬浮需要在
+Electron 桌面应用中使用，浏览器开发模式下会显示桌面环境提示。
+
+| JSON 格式化 | 变量命名 |
+| --- | --- |
+| ![JSON 格式化界面](docs/images/json-formatter.png) | ![变量命名界面](docs/images/translate-naming.png) |
+
+| 图片转换 | 视频转 GIF |
+| --- | --- |
+| ![图片转换界面](docs/images/image-converter.png) | ![视频转 GIF 界面](docs/images/video-to-gif.png) |
+
+| 文件搜索 | 文档转 Markdown |
+| --- | --- |
+| ![文件搜索界面](docs/images/file-search.png) | ![文档转 Markdown 界面](docs/images/document-converter.png) |
+
+| 截图悬浮 | 屏幕取色 |
+| --- | --- |
+| ![截图悬浮界面](docs/images/screenshot-float.png) | ![屏幕取色界面](docs/images/color-picker.png) |
+
 ## 功能
 
 当前应用包含以下工具：
@@ -15,6 +36,7 @@ Bennett Toolbox 是一个基于 Electron、React、Vite 和 TypeScript 的桌面
 - JSON 格式化：格式化、校验和查看 JSON 内容。
 - 变量命名：把中文或自然语言描述转换为常见变量命名风格。
 - 图片转换：支持 PNG、JPG、WebP、GIF、SVG、ICO，以及 HEIC/HEIF。
+- 视频转 GIF：从视频中截取片段，设置帧率、宽度和颜色数并生成 GIF。
 - 文件搜索：在本地目录中搜索文件。
 - 文档转 MD：通过随包的 MarkItDown 转换器把常见文档转为 Markdown。
 - 截图悬浮：截取屏幕区域并以悬浮窗口展示。
