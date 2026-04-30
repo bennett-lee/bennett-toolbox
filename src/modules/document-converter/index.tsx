@@ -1,4 +1,4 @@
-import { useCallback, useMemo, useState } from 'react'
+import { useCallback, useEffect, useMemo, useState } from 'react'
 import {
     canConvertDocument,
     formatDocumentSize,
@@ -26,6 +26,12 @@ interface ConversionResult {
     sourceName?: string
 }
 
+interface ConversionProgress {
+    value: number
+    label: string
+    status: 'running' | 'success' | 'error'
+}
+
 function DocumentConverter() {
     const [selectedDocument, setSelectedDocument] = useState<SelectedDocument | null>(null)
     const [markdown, setMarkdown] = useState('')
@@ -33,6 +39,7 @@ function DocumentConverter() {
     const [loading, setLoading] = useState(false)
     const [copied, setCopied] = useState(false)
     const [command, setCommand] = useState<string | null>(null)
+    const [conversionProgress, setConversionProgress] = useState<ConversionProgress | null>(null)
 
     const outputName = useMemo(() => {
         return selectedDocument ? getMarkdownDownloadName(selectedDocument.name) : 'converted.md'
@@ -43,7 +50,35 @@ function DocumentConverter() {
         setError(null)
         setCopied(false)
         setCommand(null)
+        setConversionProgress(null)
     }, [])
+
+    useEffect(() => {
+        if (!loading) return
+
+        const startedAt = Date.now()
+        const timer = window.setInterval(() => {
+            const elapsedSeconds = Math.floor((Date.now() - startedAt) / 1000)
+            setConversionProgress(prev => {
+                if (!prev || prev.status !== 'running') return prev
+
+                const nextValue = Math.min(92, prev.value + (prev.value < 50 ? 6 : 3))
+                const label = elapsedSeconds < 2
+                    ? '准备读取文件'
+                    : elapsedSeconds < 8
+                        ? '调用 MarkItDown 转换'
+                        : '转换仍在进行，请稍候'
+
+                return {
+                    ...prev,
+                    value: nextValue,
+                    label,
+                }
+            })
+        }, 700)
+
+        return () => window.clearInterval(timer)
+    }, [loading])
 
     const setDocumentFromPath = useCallback((filePath: string, name: string, size: number) => {
         if (!canConvertDocument(name)) {
@@ -93,18 +128,39 @@ function DocumentConverter() {
         setError(null)
         setMarkdown('')
         setCopied(false)
+        setCommand(null)
+        setConversionProgress({
+            value: 8,
+            label: '准备转换',
+            status: 'running',
+        })
 
         try {
             const result = await ipcRenderer.invoke('convert-file-to-markdown', selectedDocument.path) as ConversionResult
             if (!result.success) {
                 setError(result.error || '转换失败')
+                setConversionProgress({
+                    value: 100,
+                    label: '转换失败',
+                    status: 'error',
+                })
                 return
             }
 
             setMarkdown(result.markdown || '')
             setCommand(result.command || null)
+            setConversionProgress({
+                value: 100,
+                label: '转换完成',
+                status: 'success',
+            })
         } catch (e) {
             setError(e instanceof Error ? e.message : '转换失败')
+            setConversionProgress({
+                value: 100,
+                label: '转换失败',
+                status: 'error',
+            })
         } finally {
             setLoading(false)
         }
@@ -213,6 +269,28 @@ function DocumentConverter() {
                         <button className="btn btn-primary" onClick={handleConvert} disabled={loading}>
                             {loading ? '转换中...' : '转换为 Markdown'}
                         </button>
+                    </section>
+                )}
+
+                {conversionProgress && (
+                    <section className={`conversion-progress ${conversionProgress.status}`}>
+                        <div className="progress-copy">
+                            <span className="progress-label">{conversionProgress.label}</span>
+                            <span className="progress-value">{conversionProgress.value}%</span>
+                        </div>
+                        <div
+                            className="progress-track"
+                            role="progressbar"
+                            aria-valuemin={0}
+                            aria-valuemax={100}
+                            aria-valuenow={conversionProgress.value}
+                            aria-label="文档转换进度"
+                        >
+                            <div
+                                className="progress-fill"
+                                style={{ width: `${conversionProgress.value}%` }}
+                            />
+                        </div>
                     </section>
                 )}
 
