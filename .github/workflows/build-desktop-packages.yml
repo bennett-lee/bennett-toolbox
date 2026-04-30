@@ -23,7 +23,7 @@ jobs:
             artifact-path: |
               release/*.dmg
               release/*.dmg.blockmap
-            build-command: CSC_IDENTITY_AUTO_DISCOVERY=false npm run build -- --mac
+            build-command: CSC_IDENTITY_AUTO_DISCOVERY=false npm run build -- --mac --publish never
           - label: Windows x64
             os: windows-latest
             artifact-name: windows-package
@@ -31,7 +31,7 @@ jobs:
               release/*.exe
               release/*.exe.blockmap
               release/latest.yml
-            build-command: npm run build -- --win --x64
+            build-command: npm run build -- --win --x64 --publish never
 
     steps:
       - name: 检出仓库
