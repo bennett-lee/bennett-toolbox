@@ -1,5 +1,9 @@
 # Bennett Toolbox
 
+[![构建桌面安装包](https://github.com/bennett-lee/bennett-toolbox/actions/workflows/build-desktop-packages.yml/badge.svg?branch=master)](https://github.com/bennett-lee/bennett-toolbox/actions/workflows/build-desktop-packages.yml)
+[![最新发布版本](https://img.shields.io/github/v/release/bennett-lee/bennett-toolbox?include_prereleases&label=release)](https://github.com/bennett-lee/bennett-toolbox/releases/latest)
+[![MIT 许可证](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+
 Bennett Toolbox 是一个基于 Electron、React、Vite 和 TypeScript 的桌面工具箱。
 它把常用的开发、文件、图片和截图工具放在一个本地应用里，适合日常快速处理
 数据、命名、格式转换和屏幕辅助任务。
@@ -103,6 +107,20 @@ https://github.com/bennett-lee/bennett-toolbox/releases/latest
 > 安装包文件超过 GitHub 普通仓库文件的 100 MB 限制，因此不会直接提交到
 > Git。它们会作为 GitHub Release 资产发布，用户仍然可以从 GitHub 页面直接
 > 下载。
+
+## 项目规范
+
+项目包含常见的 GitHub 协作和维护文件：
+
+- [贡献指南](CONTRIBUTING.md)
+- [更新日志](CHANGELOG.md)
+- [安全策略](SECURITY.md)
+- [行为准则](CODE_OF_CONDUCT.md)
+- [支持说明](SUPPORT.md)
+- [MIT 许可证](LICENSE)
+
+Issue 模板、拉取请求模板、Dependabot 配置和自动打包工作流位于 `.github/`
+目录。
 
 ## 测试
 

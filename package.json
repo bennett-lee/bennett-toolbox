@@ -3,6 +3,24 @@
     "private": true,
     "version": "1.0.0",
     "description": "多功能工具箱桌面应用",
+    "author": "李海波 <bennettmail@163.com>",
+    "license": "MIT",
+    "homepage": "https://github.com/bennett-lee/bennett-toolbox#readme",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/bennett-lee/bennett-toolbox.git"
+    },
+    "bugs": {
+        "url": "https://github.com/bennett-lee/bennett-toolbox/issues"
+    },
+    "keywords": [
+        "electron",
+        "react",
+        "toolbox",
+        "markdown",
+        "heic",
+        "desktop-app"
+    ],
     "main": "dist-electron/main.js",
     "engines": {
         "node": ">=18"
@@ -10,10 +28,13 @@
     "scripts": {
         "dev": "vite",
         "build": "tsc && vite build && electron-builder",
+        "build:mac": "CSC_IDENTITY_AUTO_DISCOVERY=false npm run build -- --mac",
+        "build:win": "npm run build -- --win --x64",
         "preview": "vite preview",
         "electron:dev": "concurrently \"vite\" \"wait-on http://localhost:5173 && electron .\"",
         "electron:build": "vite build && electron-builder",
         "setup:markitdown": "zsh scripts/build_markitdown_binary.sh",
+        "typecheck": "tsc --noEmit",
         "test": "vitest run"
     },
     "dependencies": {

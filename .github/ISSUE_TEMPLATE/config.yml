@@ -1,0 +1,5 @@
+blank_issues_enabled: true
+contact_links:
+  - name: 安全问题报告
+    url: mailto:bennettmail@163.com
+    about: 请通过私密渠道报告安全问题。

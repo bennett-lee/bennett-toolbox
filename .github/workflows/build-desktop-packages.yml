@@ -1,4 +1,4 @@
-name: Build desktop packages
+name: 构建桌面安装包
 
 on:
   push:
@@ -11,7 +11,7 @@ permissions:
 
 jobs:
   build:
-    name: Build ${{ matrix.label }}
+    name: 构建 ${{ matrix.label }}
     runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false
@@ -34,24 +34,24 @@ jobs:
             build-command: npm run build -- --win --x64
 
     steps:
-      - name: Check out repository
+      - name: 检出仓库
         uses: actions/checkout@v4
 
-      - name: Set up Node.js
+      - name: 设置 Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 18.17.0
           cache: npm
 
-      - name: Set up Python
+      - name: 设置 Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.11'
 
-      - name: Install dependencies
+      - name: 安装依赖
         run: npm ci
 
-      - name: Build bundled MarkItDown on macOS
+      - name: 在 macOS 构建内置 MarkItDown
         if: runner.os == 'macOS'
         shell: bash
         run: |
@@ -72,7 +72,7 @@ jobs:
           cp build_tools/markitdown-dist/markitdown vendor/markitdown/markitdown
           chmod +x vendor/markitdown/markitdown
 
-      - name: Build bundled MarkItDown on Windows
+      - name: 在 Windows 构建内置 MarkItDown
         if: runner.os == 'Windows'
         shell: pwsh
         run: |
@@ -92,10 +92,10 @@ jobs:
             scripts\markitdown_launcher.py
           Copy-Item build_tools\markitdown-dist\markitdown.exe vendor\markitdown\markitdown.exe
 
-      - name: Build installer
+      - name: 构建安装包
         run: ${{ matrix.build-command }}
 
-      - name: Upload installer artifact
+      - name: 上传安装包产物
         uses: actions/upload-artifact@v4
         with:
           name: ${{ matrix.artifact-name }}
@@ -103,17 +103,17 @@ jobs:
           if-no-files-found: error
 
   publish:
-    name: Publish latest release
+    name: 发布最新安装包
     runs-on: ubuntu-latest
     needs: build
     steps:
-      - name: Download installer artifacts
+      - name: 下载安装包产物
         uses: actions/download-artifact@v4
         with:
           path: artifacts
           merge-multiple: true
 
-      - name: Publish latest GitHub release
+      - name: 发布 latest GitHub Release
         env:
           GH_TOKEN: ${{ github.token }}
           GITHUB_REPOSITORY: ${{ github.repository }}
@@ -121,14 +121,14 @@ jobs:
         shell: bash
         run: |
           cat > release-notes.md <<EOF
-          Automated desktop package build for commit ${GITHUB_SHA}.
+          自动构建的桌面安装包，对应提交 ${GITHUB_SHA}。
 
-          Download the macOS DMG or Windows x64 installer from the assets below.
+          可在下方 Assets 中下载 macOS DMG 或 Windows x64 安装包。
           EOF
           gh release delete latest --repo "${GITHUB_REPOSITORY}" --yes --cleanup-tag || true
           gh release create latest artifacts/* \
             --repo "${GITHUB_REPOSITORY}" \
             --target "${GITHUB_SHA}" \
-            --title "Latest Bennett Toolbox build" \
+            --title "Bennett Toolbox 最新安装包" \
             --notes-file release-notes.md \
             --latest

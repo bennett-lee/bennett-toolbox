@@ -1,0 +1,59 @@
+name: 缺陷反馈
+description: 报告 Bennett Toolbox 中可复现的问题。
+title: "[缺陷]: "
+labels:
+  - 缺陷
+body:
+  - type: markdown
+    attributes:
+      value: |
+        感谢反馈问题。请提供足够信息，方便他人复现和定位。
+  - type: input
+    id: version
+    attributes:
+      label: 应用版本或提交
+      description: 请填写发布版本或提交 SHA。
+      placeholder: "1.0.0 或 114ae6e"
+    validations:
+      required: true
+  - type: dropdown
+    id: os
+    attributes:
+      label: 操作系统
+      options:
+        - macOS
+        - Windows
+        - 其他
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: 复现步骤
+      description: 请列出触发问题的具体步骤。
+      placeholder: |
+        1. 打开应用。
+        2. 选择……
+        3. 出现……
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: 预期行为
+      description: 请说明你原本期待发生什么。
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: 实际行为
+      description: 请说明实际发生了什么。
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: 错误详情
+      description: 请粘贴错误信息、截图说明或相关日志。
+      render: text
