@@ -24,6 +24,10 @@ Bennett Toolbox 是一个基于 Electron、React、Vite 和 TypeScript 的桌面
 
 ![图片转换界面](docs/images/image-converter.png)
 
+### 图片去水印
+
+![图片去水印界面](docs/images/watermark-removal.png)
+
 ### 视频转 GIF
 
 ![视频转 GIF 界面](docs/images/video-to-gif.png)
@@ -51,6 +55,7 @@ Bennett Toolbox 是一个基于 Electron、React、Vite 和 TypeScript 的桌面
 - JSON 格式化：格式化、校验和查看 JSON 内容。
 - 变量命名：把中文或自然语言描述转换为常见变量命名风格。
 - 图片转换：支持 PNG、JPG、WebP、GIF、SVG、ICO，以及 HEIC/HEIF。
+- 图片去水印：框选或涂抹图片中的水印区域，并在本地生成修复后的 PNG。
 - 视频转 GIF：从视频中截取片段，设置帧率、宽度和颜色数并生成 GIF。
 - 文件搜索：在本地目录中搜索文件。
 - 文档转 MD：通过随包的 MarkItDown 转换器把常见文档转为 Markdown。
