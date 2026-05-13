@@ -9,6 +9,7 @@ import ColorPicker from './modules/color-picker'
 import DocumentConverter from './modules/document-converter'
 import VideoToGif from './modules/video-to-gif'
 import WatermarkRemoval from './modules/watermark-removal'
+import PdfToImages from './modules/pdf-to-images'
 import './styles/App.css'
 
 // 默认模块配置
@@ -17,6 +18,7 @@ const defaultModules = [
     { id: 'translate-naming', name: '变量命名', icon: 'Aa' },
     { id: 'image-converter', name: '图片转换', icon: '🖼️' },
     { id: 'watermark-removal', name: '图片去水印', icon: 'WM' },
+    { id: 'pdf-to-images', name: 'PDF 转图片', icon: 'PDF' },
     { id: 'video-to-gif', name: '视频转 GIF', icon: 'GIF' },
     { id: 'file-search', name: '文件搜索', icon: '🔍' },
     { id: 'document-converter', name: '文档转 MD', icon: 'MD' },
@@ -74,6 +76,8 @@ function App() {
                 return <ImageConverter />
             case 'watermark-removal':
                 return <WatermarkRemoval />
+            case 'pdf-to-images':
+                return <PdfToImages />
             case 'video-to-gif':
                 return <VideoToGif />
             case 'file-search':

@@ -1,0 +1,301 @@
+.pdf-to-images {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    gap: 20px;
+}
+
+.pdf-to-images-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-shrink: 0;
+}
+
+.pdf-to-images-body {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    min-height: 0;
+    overflow: auto;
+}
+
+.pdf-upload-zone {
+    display: flex;
+    flex: 1;
+    min-height: 420px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    padding: 60px 40px;
+    background: var(--bg-card);
+    border: 2px dashed var(--border-color);
+    border-radius: var(--radius-lg);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.pdf-upload-zone:hover {
+    border-color: var(--primary-color);
+    background: rgba(80, 120, 255, 0.05);
+}
+
+.pdf-upload-icon,
+.pdf-file-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--primary-light);
+    background: rgba(80, 120, 255, 0.12);
+    border-radius: 20px;
+    font-family: var(--font-mono);
+    font-weight: 800;
+}
+
+.pdf-upload-icon {
+    width: 82px;
+    height: 82px;
+    font-size: 26px;
+}
+
+.pdf-upload-title {
+    color: var(--text-primary);
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.pdf-upload-hint {
+    color: var(--text-muted);
+    font-size: 13px;
+}
+
+.pdf-workspace {
+    display: grid;
+    grid-template-columns: minmax(260px, 340px) minmax(280px, 380px);
+    gap: 20px;
+    align-items: start;
+}
+
+.pdf-source-card,
+.pdf-settings-card,
+.pdf-result-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+}
+
+.pdf-result-card {
+    grid-column: 1 / -1;
+}
+
+.pdf-file-summary {
+    display: flex;
+    min-height: 280px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    padding: 28px;
+}
+
+.pdf-file-icon {
+    width: 88px;
+    height: 88px;
+    font-size: 28px;
+}
+
+.pdf-file-name {
+    max-width: 100%;
+    color: var(--text-primary);
+    font-size: 16px;
+    font-weight: 600;
+    overflow-wrap: anywhere;
+    text-align: center;
+}
+
+.pdf-file-meta {
+    display: flex;
+    gap: 16px;
+    color: var(--text-secondary);
+    font-family: var(--font-mono);
+    font-size: 13px;
+}
+
+.pdf-settings-card {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    padding: 18px;
+}
+
+.pdf-format-switch {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 4px;
+    background: var(--bg-tertiary);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-sm);
+}
+
+.pdf-format-switch button {
+    padding: 8px 10px;
+    color: var(--text-secondary);
+    background: transparent;
+    border: 0;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.pdf-format-switch button.active {
+    color: white;
+    background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+}
+
+.pdf-setting-field {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    color: var(--text-secondary);
+    font-size: 13px;
+}
+
+.pdf-setting-field input[type="range"] {
+    width: 100%;
+    height: 6px;
+    -webkit-appearance: none;
+    appearance: none;
+    background: var(--bg-tertiary);
+    border-radius: 999px;
+    outline: none;
+}
+
+.pdf-setting-field input[type="range"]::-webkit-slider-thumb {
+    width: 16px;
+    height: 16px;
+    -webkit-appearance: none;
+    appearance: none;
+    background: var(--primary-color);
+    border-radius: 50%;
+    box-shadow: 0 2px 6px rgba(80, 120, 255, 0.4);
+    cursor: pointer;
+}
+
+.pdf-convert-btn {
+    width: 100%;
+    padding: 12px;
+}
+
+.pdf-progress {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.pdf-progress-meta {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    color: var(--text-muted);
+    font-size: 12px;
+}
+
+.pdf-progress-track {
+    height: 8px;
+    overflow: hidden;
+    background: var(--bg-tertiary);
+    border-radius: 999px;
+}
+
+.pdf-progress-fill {
+    height: 100%;
+    background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
+    border-radius: inherit;
+    transition: width var(--transition-normal);
+}
+
+.pdf-empty-result {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 260px;
+    color: var(--text-muted);
+    font-size: 14px;
+}
+
+.pdf-result-actions {
+    display: flex;
+    justify-content: flex-end;
+    padding: 14px 16px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.pdf-page-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 16px;
+    padding: 16px;
+}
+
+.pdf-page-card {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 12px;
+    background: rgba(20, 20, 45, 0.52);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-sm);
+}
+
+.pdf-page-preview {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 260px;
+    overflow: hidden;
+    background:
+        linear-gradient(45deg, rgba(100, 100, 150, 0.1) 25%, transparent 25%),
+        linear-gradient(-45deg, rgba(100, 100, 150, 0.1) 25%, transparent 25%),
+        linear-gradient(45deg, transparent 75%, rgba(100, 100, 150, 0.1) 75%),
+        linear-gradient(-45deg, transparent 75%, rgba(100, 100, 150, 0.1) 75%);
+    background-position: 0 0, 0 8px, 8px -8px, -8px 0;
+    background-size: 16px 16px;
+    border-radius: 4px;
+}
+
+.pdf-page-preview img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    box-shadow: var(--shadow-md);
+}
+
+.pdf-page-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.pdf-page-meta strong {
+    color: var(--text-primary);
+    font-size: 14px;
+}
+
+.pdf-page-meta span {
+    color: var(--text-muted);
+    font-family: var(--font-mono);
+    font-size: 12px;
+}
+
+@media (max-width: 1180px) {
+    .pdf-workspace {
+        grid-template-columns: 1fr;
+    }
+
+    .pdf-result-card {
+        grid-column: auto;
+    }
+}
