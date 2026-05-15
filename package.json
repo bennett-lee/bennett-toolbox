@@ -1,7 +1,7 @@
 {
     "name": "bennett-toolbox",
     "private": true,
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "多功能工具箱桌面应用",
     "author": "李海波 <bennettmail@163.com>",
     "license": "MIT",
@@ -23,7 +23,7 @@
     ],
     "main": "dist-electron/main.js",
     "engines": {
-        "node": ">=18"
+        "node": ">=20.19.0"
     },
     "scripts": {
         "dev": "vite",

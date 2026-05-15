@@ -1,4 +1,5 @@
 import { useState, useRef } from 'react'
+import packageJson from '../../../package.json'
 import './Sidebar.css'
 
 interface Module {
@@ -111,11 +112,10 @@ function Sidebar({ modules, activeModule, onModuleSelect, onModuleReorder }: Sid
             </nav>
 
             <div className="sidebar-footer">
-                <span className="version">v1.0.0</span>
+                <span className="version">v{packageJson.version}</span>
             </div>
         </aside>
     )
 }
 
 export default Sidebar
-

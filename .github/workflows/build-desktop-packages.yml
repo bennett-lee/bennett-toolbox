@@ -113,6 +113,12 @@ jobs:
           path: artifacts
           merge-multiple: true
 
+      - name: 读取应用版本号
+        shell: bash
+        run: |
+          PACKAGE_VERSION=$(node -p "require('./package.json').version")
+          echo "PACKAGE_VERSION=${PACKAGE_VERSION}" >> "$GITHUB_ENV"
+
       - name: 发布 latest GitHub Release
         env:
           GH_TOKEN: ${{ github.token }}
@@ -121,7 +127,7 @@ jobs:
         shell: bash
         run: |
           cat > release-notes.md <<EOF
-          自动构建的桌面安装包，对应提交 ${GITHUB_SHA}。
+          自动构建的 Bennett Toolbox v${PACKAGE_VERSION} 桌面安装包，对应提交 ${GITHUB_SHA}。
 
           可在下方 Assets 中下载 macOS DMG 或 Windows x64 安装包。
           EOF
@@ -129,6 +135,6 @@ jobs:
           gh release create latest artifacts/* \
             --repo "${GITHUB_REPOSITORY}" \
             --target "${GITHUB_SHA}" \
-            --title "Bennett Toolbox 最新安装包" \
+            --title "Bennett Toolbox v${PACKAGE_VERSION} 最新安装包" \
             --notes-file release-notes.md \
             --latest

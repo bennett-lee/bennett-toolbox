@@ -58,7 +58,7 @@ Bennett Toolbox 是一个基于 Electron、React、Vite 和 TypeScript 的桌面
 
 - JSON 格式化：格式化、校验和查看 JSON 内容。
 - 变量命名：把中文或自然语言描述转换为常见变量命名风格。
-- 图片转换：支持 PNG、JPG、WebP、GIF、SVG、ICO，以及 HEIC/HEIF。
+- 图片转换：支持 PNG、JPG、WebP、GIF、SVG、ICO，以及 HEIC/HEIF，可批量转换并打包下载。
 - 图片去水印：框选或涂抹图片中的水印区域，并在本地生成修复后的 PNG。
 - PDF 转图片：把 PDF 每一页渲染为一张 PNG 或 JPG，并支持打包下载。
 - 视频转 GIF：从视频中截取片段，设置帧率、宽度和颜色数并生成 GIF。
@@ -141,7 +141,15 @@ CSC_IDENTITY_AUTO_DISCOVERY=false npm run build
 ## 下载最新安装包
 
 每次推送到 `master` 分支后，GitHub Actions 会自动构建 macOS 和 Windows
-安装包，并更新 `latest` GitHub Release。
+安装包，并更新 `latest` GitHub Release。每次发布给用户下载的新安装包都必须
+先提升 `package.json` 中的版本号，安装包文件名、应用内侧边栏版本号和
+GitHub Release 标题都会跟随该版本。
+
+版本号按语义化版本管理：
+
+- 修复问题或小功能增强：提升补丁版本，例如 `1.0.0` -> `1.0.1`。
+- 新增较完整的功能模块：提升次版本，例如 `1.0.1` -> `1.1.0`。
+- 不兼容变更：提升主版本，例如 `1.1.0` -> `2.0.0`。
 
 你可以在以下地址下载最新安装包：
 
