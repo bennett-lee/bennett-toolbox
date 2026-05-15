@@ -107,6 +107,9 @@ jobs:
     runs-on: ubuntu-latest
     needs: build
     steps:
+      - name: 检出仓库
+        uses: actions/checkout@v4
+
       - name: 下载安装包产物
         uses: actions/download-artifact@v4
         with:
