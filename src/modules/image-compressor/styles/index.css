@@ -1,0 +1,415 @@
+/* ================================
+   图片批量压缩模块样式
+   ================================ */
+
+.image-compressor {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    gap: 20px;
+}
+
+.image-compressor-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-shrink: 0;
+}
+
+.image-compressor-body {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    overflow: auto;
+}
+
+.compress-upload-zone {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    padding: 60px 40px;
+    background: var(--bg-card);
+    border: 2px dashed var(--border-color);
+    border-radius: var(--radius-lg);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.compress-upload-zone:hover {
+    border-color: var(--primary-color);
+    background: rgba(80, 120, 255, 0.05);
+}
+
+.compress-upload-icon {
+    font-size: 64px;
+    opacity: 0.7;
+}
+
+.compress-upload-text {
+    color: var(--text-primary);
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.compress-upload-hint {
+    max-width: 620px;
+    color: var(--text-muted);
+    font-size: 13px;
+    text-align: center;
+}
+
+.compress-error-box {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 18px;
+    color: #ff8080;
+    background: rgba(255, 80, 80, 0.1);
+    border: 1px solid rgba(255, 80, 80, 0.2);
+    border-radius: var(--radius-md);
+    font-size: 14px;
+}
+
+.compress-content {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.compress-toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 16px 18px;
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+}
+
+.compress-summary {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    color: var(--text-secondary);
+}
+
+.compress-summary strong {
+    color: var(--primary-light);
+    font-family: var(--font-mono);
+    font-size: 24px;
+}
+
+.compress-success {
+    padding: 4px 8px;
+    color: #80ff80;
+    background: rgba(80, 255, 80, 0.12);
+    border-radius: var(--radius-sm);
+    font-size: 12px;
+}
+
+.compress-actions {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.compress-control-panel {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+}
+
+.compress-control-panel .panel-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 16px;
+    background: rgba(40, 40, 70, 0.5);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.compress-control-panel .panel-title {
+    color: var(--text-secondary);
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.compress-control-body {
+    display: grid;
+    grid-template-columns: minmax(160px, 210px) minmax(150px, 180px) minmax(180px, 1fr) minmax(180px, 1fr) 170px;
+    align-items: end;
+    gap: 16px;
+    padding: 18px;
+}
+
+.compress-field {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    min-width: 0;
+}
+
+.compress-label {
+    color: var(--text-secondary);
+    font-size: 12px;
+}
+
+.compress-input-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.compress-input-row input {
+    width: 100%;
+    min-width: 0;
+    padding: 8px 10px;
+    color: var(--text-primary);
+    background: var(--bg-tertiary);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    outline: none;
+}
+
+.compress-input-row input:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 2px rgba(80, 120, 255, 0.12);
+}
+
+.compress-input-row span {
+    flex: none;
+    color: var(--text-muted);
+    font-size: 12px;
+}
+
+.compress-format-buttons {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+}
+
+.compress-start-btn {
+    min-height: 42px;
+}
+
+.compress-progress {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 0 18px 18px;
+}
+
+.compress-progress-meta {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    color: var(--text-muted);
+    font-size: 13px;
+}
+
+.compress-progress-meta span:first-child {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.compress-progress-track {
+    height: 8px;
+    overflow: hidden;
+    background: var(--bg-tertiary);
+    border-radius: 999px;
+}
+
+.compress-progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--primary-color), var(--primary-light));
+    border-radius: inherit;
+    transition: width var(--transition-normal);
+}
+
+.compress-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 16px;
+}
+
+.compress-card {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    overflow: hidden;
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+}
+
+.compress-preview {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 180px;
+    padding: 16px;
+    background:
+        linear-gradient(45deg, rgba(100, 100, 150, 0.1) 25%, transparent 25%),
+        linear-gradient(-45deg, rgba(100, 100, 150, 0.1) 25%, transparent 25%),
+        linear-gradient(45deg, transparent 75%, rgba(100, 100, 150, 0.1) 75%),
+        linear-gradient(-45deg, transparent 75%, rgba(100, 100, 150, 0.1) 75%);
+    background-size: 16px 16px;
+    background-position: 0 0, 0 8px, 8px -8px, -8px 0;
+}
+
+.compress-preview img {
+    max-width: 100%;
+    max-height: 180px;
+    object-fit: contain;
+    border-radius: var(--radius-sm);
+    box-shadow: var(--shadow-md);
+}
+
+.compress-card-info {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    min-width: 0;
+    padding: 12px 14px;
+}
+
+.compress-card-name {
+    overflow: hidden;
+    color: var(--text-primary);
+    font-size: 14px;
+    font-weight: 600;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.compress-card-meta,
+.compress-result-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    color: var(--text-muted);
+    font-family: var(--font-mono);
+    font-size: 12px;
+}
+
+.compress-result-meta {
+    color: var(--text-secondary);
+}
+
+.compress-card-message {
+    color: var(--text-muted);
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+.compress-card-message.warning {
+    color: #ffd166;
+}
+
+.compress-card-message.error {
+    color: #ff8080;
+}
+
+.compress-card-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 12px 14px;
+    margin-top: auto;
+    background: rgba(40, 40, 70, 0.3);
+    border-top: 1px solid var(--border-color);
+}
+
+.format-badge {
+    padding: 4px 10px;
+    color: var(--text-muted);
+    background: var(--bg-tertiary);
+    border-radius: 4px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 600;
+}
+
+.format-badge.success {
+    color: #80ff80;
+    background: rgba(80, 255, 80, 0.15);
+}
+
+.format-btn {
+    padding: 6px 12px;
+    color: var(--text-secondary);
+    background: var(--bg-tertiary);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: 500;
+    transition: all var(--transition-fast);
+}
+
+.format-btn:hover {
+    color: var(--primary-light);
+    border-color: var(--primary-color);
+}
+
+.format-btn.active {
+    color: var(--primary-light);
+    background: linear-gradient(135deg, rgba(80, 120, 255, 0.2), rgba(120, 80, 255, 0.1));
+    border-color: var(--primary-color);
+}
+
+.quality-slider {
+    width: 100%;
+    height: 6px;
+    appearance: none;
+    background: var(--bg-tertiary);
+    border-radius: 3px;
+    outline: none;
+}
+
+.quality-slider::-webkit-slider-thumb {
+    width: 16px;
+    height: 16px;
+    appearance: none;
+    background: var(--primary-color);
+    border-radius: 50%;
+    box-shadow: 0 2px 6px rgba(80, 120, 255, 0.4);
+    cursor: pointer;
+}
+
+@media (max-width: 1180px) {
+    .compress-control-body {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .compress-start-btn {
+        grid-column: span 2;
+    }
+}
+
+@media (max-width: 760px) {
+    .compress-toolbar,
+    .compress-progress-meta {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    .compress-control-body {
+        grid-template-columns: 1fr;
+    }
+
+    .compress-start-btn {
+        grid-column: auto;
+    }
+}

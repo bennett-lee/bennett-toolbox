@@ -3,6 +3,7 @@ import Sidebar from './components/Sidebar'
 import JsonFormatter from './modules/json-formatter'
 import TranslateNaming from './modules/translate-naming'
 import ImageConverter from './modules/image-converter'
+import ImageCompressor from './modules/image-compressor'
 import FileSearch from './modules/file-search'
 import ScreenshotFloat from './modules/screenshot-float'
 import ColorPicker from './modules/color-picker'
@@ -17,6 +18,7 @@ const defaultModules = [
     { id: 'json-formatter', name: 'JSON 格式化', icon: '{ }' },
     { id: 'translate-naming', name: '变量命名', icon: 'Aa' },
     { id: 'image-converter', name: '图片转换', icon: '🖼️' },
+    { id: 'image-compressor', name: '图片压缩', icon: 'ZIP' },
     { id: 'watermark-removal', name: '图片去水印', icon: 'WM' },
     { id: 'pdf-to-images', name: 'PDF 转图片', icon: 'PDF' },
     { id: 'video-to-gif', name: '视频转 GIF', icon: 'GIF' },
@@ -74,6 +76,8 @@ function App() {
                 return <TranslateNaming />
             case 'image-converter':
                 return <ImageConverter />
+            case 'image-compressor':
+                return <ImageCompressor />
             case 'watermark-removal':
                 return <WatermarkRemoval />
             case 'pdf-to-images':

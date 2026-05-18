@@ -24,6 +24,10 @@ Bennett Toolbox 是一个基于 Electron、React、Vite 和 TypeScript 的桌面
 
 ![图片转换界面](docs/images/image-converter.png)
 
+### 图片压缩
+
+![图片压缩界面](docs/images/image-compressor.png)
+
 ### 图片去水印
 
 ![图片去水印界面](docs/images/watermark-removal.png)
@@ -59,6 +63,7 @@ Bennett Toolbox 是一个基于 Electron、React、Vite 和 TypeScript 的桌面
 - JSON 格式化：格式化、校验和查看 JSON 内容。
 - 变量命名：把中文或自然语言描述转换为常见变量命名风格。
 - 图片转换：支持 PNG、JPG、WebP、GIF、SVG、ICO，以及 HEIC/HEIF，可批量转换并打包下载。
+- 图片压缩：批量压缩图片，可设置单张目标大小上限和输出质量范围，保持原始宽高不变。
 - 图片去水印：框选或涂抹图片中的水印区域，并在本地生成修复后的 PNG。
 - PDF 转图片：把 PDF 每一页渲染为一张 PNG 或 JPG，并支持打包下载。
 - 视频转 GIF：从视频中截取片段，设置帧率、宽度和颜色数并生成 GIF。
