@@ -7,6 +7,22 @@ import { MARKITDOWN_EXTENSIONS, MarkitdownCommand, formatMarkitdownError, getMar
 
 // 存储悬浮窗口
 const floatingWindows = new Map<string, BrowserWindow>()
+let captureWindow: BrowserWindow | null = null
+let isAppQuitting = false
+
+const closeAuxiliaryWindows = () => {
+  if (captureWindow && !captureWindow.isDestroyed()) {
+    captureWindow.close()
+  }
+  captureWindow = null
+
+  for (const win of floatingWindows.values()) {
+    if (!win.isDestroyed()) {
+      win.close()
+    }
+  }
+  floatingWindows.clear()
+}
 
 const convertWithCommand = (candidate: MarkitdownCommand, filePath: string): Promise<string> => {
   return new Promise((resolve, reject) => {
@@ -224,6 +240,14 @@ function createWindow() {
   // 窗口准备好后再显示
   win.once('ready-to-show', () => {
     win.show()
+  })
+
+  win.on('close', () => {
+    if (process.platform === 'darwin') return
+    if (isAppQuitting) return
+
+    isAppQuitting = true
+    closeAuxiliaryWindows()
   })
 
   // 开发环境加载 Vite 开发服务器
@@ -525,9 +549,6 @@ ipcMain.on('toggle-always-on-top', (_, options: { id: string; alwaysOnTop: boole
   }
 })
 
-// 存储截图选择窗口
-let captureWindow: BrowserWindow | null = null
-
 // IPC 处理程序：开始框选截图
 ipcMain.handle('start-capture-selection', async () => {
   // 先截取整个屏幕
@@ -768,6 +789,11 @@ app.whenReady().then(() => {
       createWindow()
     }
   })
+})
+
+app.on('before-quit', () => {
+  isAppQuitting = true
+  closeAuxiliaryWindows()
 })
 
 app.on('window-all-closed', () => {
